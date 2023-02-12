@@ -1,4 +1,4 @@
 # .gitignore
 
 # Ignore environment variables file
-.env
+config.py

@@ -4,8 +4,7 @@ import json
 url = "http://127.0.0.1:5000/generate_image"
 
 data = {
-    "text": "A group of dogs playing in a park",
-    "image": "https://cf-s3.petcoach.co/uploads/noslidesarticleimages/e4fc25bfc8bd5b99914d911d89612407.jpg"
+    "text": "4K studio photography set of high detail irregular marble stones with gold lines stacked in impossible balance, perfect composition, cinematic light photo studio, beige color scheme, indirect lighting, 8k, elegant and luxury style",
 }
 
 response = requests.post(url, json=data)
