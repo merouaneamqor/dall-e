@@ -7,8 +7,16 @@ app = Flask(__name__)
 
 @app.route("/generate_image", methods=["GET", "POST"])
 def generate_image():
-    # Extract the text from the request body
-    data = request.get_json()
+    # Check if the request's Content-Type header is set to application/json
+    if request.headers.get("Content-Type") == "application/json":
+        data = request.get_json()
+    else:
+        # Try to convert the request data to JSON
+        try:
+            data = request.get_json(force=True)
+        except:
+            # Return an error message if the conversion fails
+            return jsonify({"error": "Content-Type must be set to application/json"}), 400
     text = data.get("text")
 
     # Get the API key from the Heroku environment
@@ -17,7 +25,7 @@ def generate_image():
     # Make a request to the DALL-E 2 API
     response = requests.post("https://api.openai.com/v1/images/generations",
                              headers={
-                                 "Content-Type": "text/html; charset=utf-8",
+                                 "Content-Type": "application/json",
                                  "Authorization": f"Bearer {api_key}"
                              },
                              json={
