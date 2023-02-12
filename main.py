@@ -17,7 +17,7 @@ def generate_image():
     # Make a request to the DALL-E 2 API
     response = requests.post("https://api.openai.com/v1/images/generations",
                              headers={
-                                 "Content-Type": "application/json",
+                                 "Content-Type": "text/html; charset=utf-8",
                                  "Authorization": f"Bearer {api_key}"
                              },
                              json={
