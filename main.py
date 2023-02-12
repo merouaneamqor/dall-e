@@ -7,8 +7,8 @@ app = Flask(__name__)
 @app.route("/generate_image", methods=["POST"])
 def generate_image():
     # Extract the text and image from the request body
-data = request.get_json()
-text = data.get("text")
+    data = request.get_json()
+    text = data.get("text")
     print(text)
     # Get the API key from the Heroku environment
     api_key = os.environ.get("DALL_E_API_KEY")
