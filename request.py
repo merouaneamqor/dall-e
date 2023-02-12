@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = "http://127.0.0.1:5000/generate_image"
+url = "https://images-endpoint.herokuapp.com/generate_image"
 
 data = {
     "text": "4K studio photography set of high detail irregular marble stones with gold lines stacked in impossible balance, perfect composition, cinematic light photo studio, beige color scheme, indirect lighting, 8k, elegant and luxury style",
