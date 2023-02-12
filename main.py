@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
-import config
+import os
 import requests
-
 
 app = Flask(__name__)
 
@@ -11,11 +10,14 @@ def generate_image():
     data = request.get_json()
     text = data.get("text")
 
+    # Get the API key from the Heroku environment
+    api_key = os.environ.get("DALL_E_API_KEY")
+
     # Make a request to the DALL-E 2 API
     response = requests.post("https://api.openai.com/v1/images/generations",
                              headers={
                                  "Content-Type": "application/json",
-                                 "Authorization": f"Bearer {config.DALL_E_API_KEY}"
+                                 "Authorization": f"Bearer {api_key}"
                              },
                              json={
                                  "model": "image-alpha-001",
