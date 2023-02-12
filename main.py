@@ -12,7 +12,6 @@ def generate_image():
     print(text)
     # Get the API key from the Heroku environment
     api_key = os.environ.get("DALL_E_API_KEY")
-    return jsonify({"image_url": api_key})
 
     # Make a request to the DALL-E 2 API
     response = requests.post("https://api.openai.com/v1/images/generations",
