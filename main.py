@@ -13,7 +13,7 @@ def generate_image():
     else:
         # Try to convert the request data to JSON
         try:
-            data = jsonify(request)
+            data = json.loads(request.data)
         except:
             # Return an error message if the conversion fails
             return jsonify({"error": "Content-Type must be set to application/json"}), 400
