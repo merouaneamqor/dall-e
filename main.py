@@ -1,15 +1,15 @@
-from flask import Flask, request, jsonify
 import os
 import requests
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
 @app.route("/generate_image", methods=["POST"])
 def generate_image():
-    # Extract the text and image from the request body
+    # Extract the text from the request body
     data = request.get_json()
     text = data.get("text")
-    print(text)
+
     # Get the API key from the Heroku environment
     api_key = os.environ.get("DALL_E_API_KEY")
 
@@ -22,9 +22,8 @@ def generate_image():
                              json={
                                  "model": "image-alpha-001",
                                  "prompt": text,
-                                 "num_images":1,
+                                 "num_images": 1,
                              })
-    print(response.json())
 
     # Check if the request was successful
     if response.status_code == 200:
